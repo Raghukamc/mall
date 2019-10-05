@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'ui/CustomInput.dart';
-import 'Homescreen.dart';
+import 'Register.dart';
 
 class Login extends StatefulWidget {
   Login({Key key, this.title}) : super(key: key);
@@ -43,7 +43,7 @@ class _LoginState extends State<Login> {
       if (statusCode == 200) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => Register()),
         );
       } else if (statusCode == 401) {
         _showDialog("Invalid Password");
@@ -217,7 +217,7 @@ class _LoginState extends State<Login> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomeScreen()),
+                                                    Register()),
                                           );
                                         })
                                   ],

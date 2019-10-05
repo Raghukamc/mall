@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mall/src/Login.dart';
 
 class BottomTab extends StatefulWidget {
   @override
@@ -28,6 +29,12 @@ class _BottomTabState extends State<BottomTab> {
     setState(() {
       _selectedIndex = index;
     });
+    if (_selectedIndex == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+      );
+    }
   }
 
   @override
@@ -44,8 +51,8 @@ class _BottomTabState extends State<BottomTab> {
           title: Text('Business'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.school),
-          title: Text('School'),
+          icon: Icon(Icons.person),
+          title: Text('Profile'),
         ),
       ],
       currentIndex: _selectedIndex,
