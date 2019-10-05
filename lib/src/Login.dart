@@ -84,6 +84,10 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          // Use Brightness.light for dark status bar
+          // or Brightness.dark for light status bar
+          backgroundColor: Color.fromRGBO(98, 0, 238, 0.9)),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,

@@ -49,133 +49,139 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/bg.jpg"), fit: BoxFit.cover)),
-        //  color: Color.fromRGBO(88, 85, 214, 1.0),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Container(
-              width: MediaQuery.of(context).size.width * 0.85,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 50),
-                child: Center(
-                    child: (!status
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Material(
-                                elevation: 20.0,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(80.0)),
-                                child: Padding(
-                                    padding: const EdgeInsets.all(30.0),
-                                    child: Image.asset(
-                                      'assets/logo.png',
-                                      width: 80,
-                                      height: 80,
-                                    )),
-                              ),
-                              SizedBox(height: 40),
-                              Column(
-                                children: <Widget>[
-                                  CustomInputField(
-                                      Icon(Icons.person,
-                                          size: 30, color: Colors.cyan[400]),
-                                      'FULLNAME', (text) {
-                                    setState(() {
-                                      fullname = text;
-                                    });
-                                  }),
-                                  SizedBox(height: 20),
-                                  CustomInputField(
-                                      Icon(Icons.email,
-                                          size: 30, color: Colors.cyan[400]),
-                                      'EMAIL', (text) {
-                                    setState(() {
-                                      email = text;
-                                    });
-                                  }),
-                                  SizedBox(height: 20),
-                                  CustomInputField(
-                                      Icon(Icons.phone,
-                                          size: 30, color: Colors.cyan[400]),
-                                      'PHONE NUMBER', (text) {
-                                    setState(() {
-                                      mob_num = text;
-                                    });
-                                  }),
-                                  SizedBox(height: 20),
-                                  CustomInputField(
-                                      Icon(Icons.lock,
-                                          size: 30, color: Colors.cyan[400]),
-                                      'PASSWORD', (text) {
-                                    setState(() {
-                                      password = text;
-                                    });
-                                  }),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  SizedBox(height: 30),
-                                  ButtonTheme(
-                                    minWidth:
-                                        MediaQuery.of(context).size.width *
-                                            0.80,
-                                    height: 50,
-                                    buttonColor: Colors.white,
-                                    child: RaisedButton(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      onPressed: () {
-                                        _makePostRequest();
-                                        //showAlert(context);
-                                      },
-                                      child: const Text('REGISTER',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'Consolas',
-                                              color: Color.fromRGBO(
-                                                  88, 85, 214, 1.0))),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+          // Use Brightness.light for dark status bar
+          // or Brightness.dark for light status bar
+          backgroundColor: Color.fromRGBO(98, 0, 238, 0.9)),
+      body: SafeArea(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/bg.jpg"), fit: BoxFit.cover)),
+          //  color: Color.fromRGBO(88, 85, 214, 1.0),
+          child: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.85,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Center(
+                      child: (!status
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Material(
+                                  elevation: 20.0,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(80.0)),
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(30.0),
+                                      child: Image.asset(
+                                        'assets/logo.png',
+                                        width: 80,
+                                        height: 80,
+                                      )),
+                                ),
+                                SizedBox(height: 40),
+                                Column(
                                   children: <Widget>[
-                                    Text(
-                                      "Already have an account?",
-                                      style: TextStyle(
-                                          fontFamily: 'Consolas',
-                                          color: Colors.white,
-                                          fontSize: 17),
+                                    CustomInputField(
+                                        Icon(Icons.person,
+                                            size: 30, color: Colors.cyan[400]),
+                                        'FULLNAME', (text) {
+                                      setState(() {
+                                        fullname = text;
+                                      });
+                                    }),
+                                    SizedBox(height: 20),
+                                    CustomInputField(
+                                        Icon(Icons.email,
+                                            size: 30, color: Colors.cyan[400]),
+                                        'EMAIL', (text) {
+                                      setState(() {
+                                        email = text;
+                                      });
+                                    }),
+                                    SizedBox(height: 20),
+                                    CustomInputField(
+                                        Icon(Icons.phone,
+                                            size: 30, color: Colors.cyan[400]),
+                                        'PHONE NUMBER', (text) {
+                                      setState(() {
+                                        mob_num = text;
+                                      });
+                                    }),
+                                    SizedBox(height: 20),
+                                    CustomInputField(
+                                        Icon(Icons.lock,
+                                            size: 30, color: Colors.cyan[400]),
+                                        'PASSWORD', (text) {
+                                      setState(() {
+                                        password = text;
+                                      });
+                                    }),
+                                    SizedBox(
+                                      height: 20,
                                     ),
-                                    FlatButton(
-                                        child: Text("Login",
-                                            style: TextStyle(
-                                                fontFamily: 'Poppins-Black',
-                                                color: Colors.lightBlue,
-                                                fontSize: 17)),
+                                    SizedBox(height: 30),
+                                    ButtonTheme(
+                                      minWidth:
+                                          MediaQuery.of(context).size.width *
+                                              0.80,
+                                      height: 50,
+                                      buttonColor: Colors.white,
+                                      child: RaisedButton(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
                                         onPressed: () {
-                                          Navigator.pop(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Register()),
-                                          );
-                                        })
+                                          _makePostRequest();
+                                          //showAlert(context);
+                                        },
+                                        child: const Text('REGISTER',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontFamily: 'Consolas',
+                                                color: Color.fromRGBO(
+                                                    88, 85, 214, 1.0))),
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              )
-                            ],
-                          )
-                        : CircularProgressIndicator())),
+                                Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        "Already have an account?",
+                                        style: TextStyle(
+                                            fontFamily: 'Consolas',
+                                            color: Colors.white,
+                                            fontSize: 17),
+                                      ),
+                                      FlatButton(
+                                          child: Text("Login",
+                                              style: TextStyle(
+                                                  fontFamily: 'Poppins-Black',
+                                                  color: Colors.lightBlue,
+                                                  fontSize: 17)),
+                                          onPressed: () {
+                                            Navigator.pop(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Register()),
+                                            );
+                                          })
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )
+                          : CircularProgressIndicator())),
+                ),
               ),
             ),
           ),
