@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ui/Clipper.dart';
+import 'package:mall/src/ui/BottomTab.dart';
 
 class SubCategory extends StatefulWidget {
   @override
@@ -7,30 +8,7 @@ class SubCategory extends StatefulWidget {
 }
 
 class _SubCategoryState extends State<SubCategory> {
-  int _selectedIndex = 0;
   var list = ["one", "two", "three", "four"];
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   List<Text> createChildrenTexts() {
     return list
@@ -307,26 +285,7 @@ class _SubCategoryState extends State<SubCategory> {
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              title: Text('Business'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              title: Text('School'),
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          backgroundColor: Color.fromRGBO(98, 0, 238, 0.9),
-          onTap: _onItemTapped,
-        ));
+        bottomNavigationBar: BottomTab());
   }
 }
 
